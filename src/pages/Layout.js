@@ -25,7 +25,11 @@ export default function Layout() {
                 <Grid item xs={12}>
                     <Header />
                 </Grid>
-                <Grid item sm={2}> <Vtab /> </Grid><Grid item xs={12} sm={9}></Grid>
+                <Grid item container>
+                        <Grid item sm={2}> <Vtab /></Grid>
+                        <Grid item xs={12} sm={9}></Grid>
+                </Grid>
+                
             </Grid>
         </div>
     )
