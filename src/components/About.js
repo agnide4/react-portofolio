@@ -15,7 +15,7 @@ export default function About() {
             <Grid container spacing={3}>
                 <Grid item sm={6}><Paper xs={12} >
                     
-                    <h3>
+                    <span>
                         <p>
                         I'm Samir and I would like to welcome to my page.
                         I am a junior full stack developper with an enthusiatic attitude towards new challenges.
@@ -24,13 +24,13 @@ export default function About() {
                         </p>
                         <p>
                         Constantly learning new things keeps me alive and I am hoping to take on the challenge
-                        of finding inovative solutions for the mainly challenges mankind faces. 
+                        of finding inovative solutions for the many challenges mankind faces. 
                         </p>
                         <p>
                         As developers we have a lot to offer the world............ 
                         </p>
                         
-                    </h3>
+                    </span>
                 
                 </Paper></Grid>
                 <Grid item sm={6}><h1>Technologies I use</h1>

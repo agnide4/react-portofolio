@@ -1,0 +1,31 @@
+
+[
+{
+
+    "type" : "Undergraduate degree",
+    "proof": "../data/Images/Richland College.pdf"
+
+
+},
+{   
+    "type": "Full Stack web developer Bootcamp",
+    "proof": "../data/Images/640-contact.jpg"
+
+},
+{
+    "type": "Certifications",
+    "technologies": [
+        {
+            "Field": "Amazon Web Services",
+            "proof": [
+                "./Aws certs/Aws cloud architecture.pdf",
+                "./Aws certs/AWS cloud practitioner.pdf",
+                "./Aws certs/AWS cloud pricing and support.pdf",
+                "./Aws certs/AWs cloud security.pdf"
+            ]
+        }
+    ]
+        
+    
+}
+]

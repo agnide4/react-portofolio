@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import Header from '../components/Header';
 import Vtab from '../components/Vtab';
 import About from "../components/About"
+import Education from '../components/Education';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -40,7 +41,7 @@ export default function Layout() {
                             {tabValue === 0 ? (
                                 <About />
                             ) : tabValue === 1 ? (
-                                <h1>Portofolio</h1>
+                                <Education />
                             ) : (
                                 <h3>Am good</h3>
                             )}
