@@ -14,7 +14,7 @@ const getTabValueSuccess = (value) => ({
   export const getTabValue = (value) =>{
       return (dispatch, getState) => {
           dispatch({type: GET_TABVALUE_REQUEST})
-          if(value){
+          if(!null){
               console.log("In actions", value)
               dispatch(getTabValueSuccess(value))
           }else{

@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { useSelector, useDispatch } from "react-redux"
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -10,6 +11,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Avatar from '@material-ui/core/Avatar';
+import { getTabValue } from '../action';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -22,14 +24,28 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
-}));    
+})); 
+
+const options = [
+  'About Me',
+  'EDUCATION',
+  'PORTOFOLIO',
+  'Reach Out',
+];   
 
 
 export default function Header() {
-    const [anchorEl, setAnchorEl] = React.useState(null);
+  const dispatch = useDispatch()
+
+    const [anchorEl, setAnchorEl] = useState(null);
     
     const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
+
+  };
+  const handleSelectedItemClick = (event, index) => {
+    dispatch(getTabValue(index))
+    setAnchorEl(null);
   };
 
   const handleClose = () => {
@@ -45,7 +61,7 @@ export default function Header() {
         <Toolbar>
          
           <Hidden smUp>
-                <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+                {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" > */}
                         <MenuIcon  aria-haspopup="true" onClick={handleClick}/>
                         <Menu
                             id="profile-Menu"
@@ -54,11 +70,17 @@ export default function Header() {
                             open={Boolean(anchorEl)}
                             onClose={handleClose}
                         >
-                        <MenuItem onClick={handleClose}>About Me</MenuItem>
-                        <MenuItem onClick={handleClose}>Education</MenuItem>
-                        <MenuItem onClick={handleClose}>Portofolio</MenuItem>
+                        {options.map((option, index) =>(
+                          <MenuItem
+                              key={option}
+                              
+                              onClick={(event) => handleSelectedItemClick(event, index)}
+                          >
+                            {option}
+                          </MenuItem>
+                        ))}
                         </Menu>
-                </IconButton>
+                {/* </IconButton> */}
           </Hidden>
            
         
