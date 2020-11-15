@@ -1,4 +1,5 @@
 import {GET_TABVALUE_REQUEST, GET_TABVALUE_SUCCESS, GET_TABVALUE_FAILURE} from "./constants"
+import {GET_PDFVALUE_REQUEST, GET_PDFVALUE_SUCCESS, GET_PDFVALUE_FAILURE} from "./constants"
 
 
 const getTabValueSuccess = (value) => ({
@@ -21,4 +22,26 @@ const getTabValueSuccess = (value) => ({
               dispatch(getTabValueFailure())
           }
       }
+}
+
+const getPdfValueSuccess = (value) => ({
+    type: GET_PDFVALUE_SUCCESS,
+    payload: value
+  })
+  
+  const getPdfValueFailure = (error) => ({
+    type: GET_PDFVALUE_FAILURE,
+    payload: error
+  })
+
+  export const getPdfValue = (value) =>{
+    return (dispatch, getState) => {
+        dispatch({type: GET_PDFVALUE_REQUEST})
+        if(!null){
+            console.log("In actions", value)
+            dispatch(getPdfValueSuccess(value))
+        }else{
+            dispatch(getTabValueFailure())
+        }
+    }
 }

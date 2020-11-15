@@ -11,3 +11,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.react-pdf_Page_canvas{
+  @media screen and (max-width: 450px){
+    max-width:65%;
+    height: 35%
+
+    
+  }
+}

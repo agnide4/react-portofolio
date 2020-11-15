@@ -45,9 +45,7 @@ export default function Vtab() {
         dispatch(getTabValue(value))
     }
 
-  //   useEffect(() => {
-  //     dispatch(getTabValue(tabClick))
-  // }, [tabClick])
+  
     
     const classes = useStyles();
 
@@ -72,20 +70,10 @@ export default function Vtab() {
                 </Tabs>
 
             </Hidden>
-            {/* <TabPanel value={tabValue} index={0}></TabPanel>
-            <TabPanel value={tabValue} index={1}></TabPanel>
-            <TabPanel value={tabValue} index={2}></TabPanel> */}
+
                 
             
         </div>
     )
 }
 
-function TabPanel (props){
-
-  return(
-    <div>
-     <h1>Tab</h1>
-    </div>
-  )
-}

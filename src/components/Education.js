@@ -1,21 +1,24 @@
 import React from 'react'
 import data from "../data/certs.json"
-import { CardContent, makeStyles, Typography } from "@material-ui/core"
+import { CardContent, makeStyles, Typography, Modal } from "@material-ui/core"
+import { useSelector, useDispatch } from "react-redux"
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import { borders } from '@material-ui/system'
 import CardMedia from '@material-ui/core/CardMedia';
 import Box from '@material-ui/core/Box'
 import richland from "../data/Images/Richland College.pdf"
-
+import Pdf from "../components/Mypdf"
 import Grid from '@material-ui/core/Grid';
+
+import {getPdfValue} from "../action"
 
 import { CreateRounded } from '@material-ui/icons';
 import "../App.css"
 
 const certs = data
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) =>({
     root: {
         // maxWidth: 345,
         borderSpacing: 10,
@@ -53,19 +56,74 @@ const useStyles = makeStyles({
             cursor: "pointer",
             fontWeight: "bold",
         }
-    }
+    },
+    modal: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        objectFit: "cover",
+        marginTop: "85px"
+        
+        
+    },
+    paper: {
+        backgroundColor: theme.palette.background.paper,
+        border: '2px solid #000',
+        boxShadow: theme.shadows[5],
+        padding: theme.spacing(2, 4, 3),
+    },
+    box:{
+        width: "auto",
+        
+    },
     
     
-  });
+    
+  }));
+
+  const isMobile = window.innerWidth;
+  console.log(isMobile)
 
 
 export default function Education() {
+    const dispatch = useDispatch()
+    const [pdfValue, error] = useSelector((gState) => [
+        gState.pdfValue,
+        gState.error
+    ])
+    const [open, setOpen] = React.useState(false);
+
+    const pdfOnclick = (e) =>{
+        console.log(e.target.title)
+        dispatch(getPdfValue(e.target.title))
+
+
+    }
+    const handleOpen = () => {
+        setOpen(true);
+      };
+    
+      const handleClose = () => {
+        setOpen(false);
+      };
+
+    
+
     const classes = useStyles()
     return (
 
         <div>
+            <Box>
+                <Modal open={open} onClose={handleClose} className={classes.modal} >
+                            <Pdf/>
+                </Modal>
+            </Box>
            
            <Grid container spacing={3} justify="space-evenly">
+               
+               
+               
+               
             <Grid item sm={4} xs={12}>
                 <Card className={classes.root}>
                     <CardHeader title="SKILLS"/>
@@ -103,10 +161,10 @@ export default function Education() {
            <Card className={classes.root}>
                <CardHeader title="Education"/>
                <CardContent>
-                        <ul className={classes.text}>
-                            <li className={classes.certs}>Graduate of Coding BootCamp UT Austin October 2020</li>
-                            <li className={classes.certs}>Student Pursuing Bachelor degree in Computer Science at UT Dallas</li>
-                            <li className={classes.certs}>Associate degree in Computer Science (Richland College) May 2019</li>
+                        <ul className={classes.text} onClick={handleOpen} >
+                            <li className={classes.certs}  title="Bootcamp" onClick={(e) => {pdfOnclick(e)}}>Graduate of Coding BootCamp UT Austin October 2020</li>
+                            <li className={classes.certs} >Student Pursuing Bachelor degree in Computer Science at UT Dallas</li>
+                            <li className={classes.certs} title="Richland" onClick={(e) => {pdfOnclick(e)}}>Associate degree in Computer Science (Richland College) May 2019</li>
                         </ul>              
                </CardContent>
            </Card>
