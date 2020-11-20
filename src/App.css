@@ -28,7 +28,14 @@
   color: #61dafb;
 }
 
+.react-pdf_Page_canvas{
+  @media screen and (max-width: 600px){
+    max-width:65%;
+    height: 35%
 
+    
+  }
+}
 
 @keyframes App-logo-spin {
   from {

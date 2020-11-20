@@ -1,6 +1,6 @@
 import React from 'react'
 import data from "../data/certs.json"
-import { CardContent, makeStyles, Typography, Modal } from "@material-ui/core"
+import { CardContent, makeStyles, Typography, Modal, withWidth } from "@material-ui/core"
 import { useSelector, useDispatch } from "react-redux"
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -113,7 +113,7 @@ export default function Education() {
     return (
 
         <div>
-            <Box>
+            <Box >
                 <Modal open={open} onClose={handleClose} className={classes.modal} >
                             <Pdf/>
                 </Modal>

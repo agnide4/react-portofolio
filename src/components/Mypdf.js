@@ -16,8 +16,8 @@ export default  function MyPdf() {
 
   const styles = StyleSheet.create({
     section: {
-      '@media screen max-width: 480': {
-        width: 1,
+      '@media screen max-width: 600': {
+        width: "75%",
         color: "black"
       }
     }

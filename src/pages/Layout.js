@@ -7,6 +7,7 @@ import Header from '../components/Header';
 import Vtab from '../components/Vtab';
 import About from "../components/About"
 import Education from '../components/Education';
+import Portofolio from '../components/Portofolio';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -43,7 +44,7 @@ export default function Layout() {
                             ) : tabValue === 1 ? (
                                 <Education />
                             ) : (
-                                <h3>Am good</h3>
+                                <Portofolio />
                             )}
                         </Grid>
                 </Grid>
