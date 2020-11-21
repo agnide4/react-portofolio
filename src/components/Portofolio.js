@@ -7,7 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-
+import image from  "../data/Images/Quiz.JPG"
 
 console.log()
 
@@ -16,7 +16,7 @@ const activities = [
     {
         "Title": "Daily Planner App",
         "Description": "This App uses HTML, JQuery and CSS. Local Storage is also used to store user input",
-        "ImgSrc": "../data/Images/DayPlanner.JPG",
+        "ImgSrc": "../data/Images/Quiz.JPG",
         "Git Repo": "https://github.com/agnide4/dailyPlanner",
         "Deployed App": "https://agnide4.github.io/dailyPlanner/index.html",
         "Project": false
@@ -24,7 +24,7 @@ const activities = [
     {
         "Title": "Password or Token Generator",
         "Description": "This app generates secure passwords or token based on your specifications. Tools used are HTML, CSS and Jquery",
-        "ImgSrc": "",
+        "ImgSrc": "/UT_Austin/src/data/Images/DayPlanner.jpg",
         "Git Repo": "https://github.com/agnide4/PwdGenerator",
         "Deployed App": "https://agnide4.github.io/PwdGenerator",
         "Project": false
