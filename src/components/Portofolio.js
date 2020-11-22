@@ -147,7 +147,7 @@ export default function Portofolio() {
 
     return (
 
-        <Grid container spacing={2}>
+        <Grid container spacing={2} style={{backgroundColor:"lightgrey", marginTop:"07px", marginLeft:"15px"}}>
             { activities.map((item, id) => (
                 item.Project ? (
                         <Grid item xs={12} sm={3}>
