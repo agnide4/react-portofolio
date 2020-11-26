@@ -17,7 +17,7 @@ import SpringBoard from  "../data/Images/Springboard project.JPG"
 import Weather from  "../data/Images/weatherboard.JPG"
 import Gbooks from "../data/Images/gBooks.JPG"
 import EmpDir from "../data/Images/EmployeeD.JPG"
-import { FullscreenExit } from '@material-ui/icons';
+
 import { Grid } from '@material-ui/core';
 
 

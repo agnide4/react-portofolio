@@ -8,6 +8,7 @@ import Vtab from '../components/Vtab';
 import About from "../components/About"
 import Education from '../components/Education';
 import Portofolio from '../components/Portofolio';
+import Contact from "../components/Contact"
 
 
 const useStyles = makeStyles((theme) => ({
@@ -43,8 +44,10 @@ export default function Layout() {
                                 <About />
                             ) : tabValue === 1 ? (
                                 <Education />
-                            ) : (
+                            ) : tabValue === 2 ? (
                                 <Portofolio />
+                            ) : (
+                                <Contact />
                             )}
                         </Grid>
                 </Grid>
