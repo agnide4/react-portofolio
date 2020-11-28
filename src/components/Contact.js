@@ -39,34 +39,9 @@ function Contact() {
     return (
 
         <div>
-            <Grid container className={classes.root}>
-            <Grid item xs={12} sm={5} style={{marginRight:"9px"}}>
-            <h1>Request resume as a PDF sent to your email</h1>
-                <form className={classes.form}>
-                <FormControl>
-                        <InputLabel htmlFor="name">Name</InputLabel>
-                        <Input id="name" aria-describedby="my-helper-text" />
-                        <FormHelperText id="my-helper-text">Your name</FormHelperText>
-                </FormControl>
-                <FormControl>
-                        <InputLabel htmlFor="email">Email address</InputLabel>
-                        <Input id="email" aria-describedby="email" />
-                        <FormHelperText id="email">Email where you want the resume sent</FormHelperText>     
-                </FormControl>
-                <FormControl>
-                <InputLabel htmlFor="company">Your company name</InputLabel>
-                        <Input id="company" aria-describedby="company-name" />
-                        {/* <FormHelperText id="my-helper-text">Email where you want the resume sent</FormHelperText> */}
-                </FormControl>
-                
-                <Button type="Submit" variant="outlined" style={{marginTop:"10px"}}>Am a button</Button>    
-               </form>
-            </Grid>
-            <Hidden xsDown>
-                    <Grid item sm={1} className={classes.middle}></Grid>
-            </Hidden>
+           
             
-            <Grid item xs={12} sm={5} style={{marginLeft:"9px"}}>
+            
                     <h1>Set up an appointment</h1>
                 <form className={classes.form}>
                 <FormControl>
@@ -102,11 +77,6 @@ function Contact() {
 
                 <Button type="Submit" variant="outlined" style={{marginTop:"10px"}}>Am a button</Button>
                </form>
-            </Grid>
-
-
-
-            </Grid>
             
             
         </div>

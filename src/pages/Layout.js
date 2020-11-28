@@ -9,12 +9,26 @@ import About from "../components/About"
 import Education from '../components/Education';
 import Portofolio from '../components/Portofolio';
 import Contact from "../components/Contact"
+import Resume from "../components/Resume"
+import Hidden from '@material-ui/core/Hidden';
+
+
 
 
 const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
+    },
+    reach:{
+      marginLeft: "10px",
+      marginTop: "15px"
+    },
+    middle:{
+        background:"lightgreen",
+        border:"solid",
+        borderColor:"black"
     }
+
   }));
 
 export default function Layout() {
@@ -47,7 +61,14 @@ export default function Layout() {
                             ) : tabValue === 2 ? (
                                 <Portofolio />
                             ) : (
-                                <Contact />
+                                <Grid container>
+                                    <Grid item xs={12} sm={5} style={{marginRight:"9px"}}><Resume/></Grid> 
+                                    <Hidden xsDown>
+                                       <Grid item sm={1} className={classes.middle}></Grid>
+                                    </Hidden>
+                                    <Grid item xs={12} sm={5} style={{marginLeft:"9px"}}><Contact/></Grid> 
+                                </Grid>
+                                
                             )}
                         </Grid>
                 </Grid>
