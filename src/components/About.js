@@ -1,29 +1,46 @@
 import React from 'react'
 import Grid from '@material-ui/core/Grid';
 import {Paper} from "@material-ui/core"
+import { makeStyles } from '@material-ui/core/styles';
 
+const useStyles = makeStyles((theme) => ({
 
+    root: {
+      flexGrow: 1,
+      backgroundColor: "#b5dae9",
+      marginTop: "17px",
+      marginLeft:"7px"
+    },
+    text: {
+        textAlign: "center",
+        fontFamily: "Times New Roman, Times, serif",
+        fontSize: "19px",
+        lineHeight: "175%"
+    }
+  })); 
 
 
 export default function About() {
 
+    const classes = useStyles();
 
 
 
     return (
         <div>
-            <Grid container spacing={3}>
-                <Grid item sm={6}><Paper xs={12} >
-                    
-                    <span>
-                        <p>
-                        I'm Samir and I would like to welcome to my page.
+            <Grid container spacing={3} className={classes.root}>
+                <Grid item sm={6}><h1>I'm Samir</h1>
+                        <Paper xs={12}>  
+                            <span className={classes.text}>
+                        
+                        <p >
+                        .... and I would like to welcome to my page.
                         I am a junior full stack developper with an enthusiatic attitude towards new challenges.
                         I am looking forward to joining a team where knowledge is nurtured and
                         talent appreciated. 
                         </p>
                         <p>
-                        Constantly learning new things keeps me alive and I am hoping to take on the challenge
+                        Constantly learning new things keeps me enagged and I am hoping to take on the challenge
                         of finding inovative solutions for the many challenges mankind faces. 
                         </p>
                         <p>
@@ -31,8 +48,8 @@ export default function About() {
                         </p>
                         
                     </span>
-                
-                </Paper></Grid>
+                    </Paper>
+                </Grid>
                 <Grid item sm={6}><h1>Technologies I use</h1>
                     <Paper>
                     <p>Throughout my learning journey I have acquainted myself with many Technologies like

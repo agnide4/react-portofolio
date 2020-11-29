@@ -50,7 +50,7 @@ function Resume() {
             <h1>Request resume as a PDF sent to your email</h1>
                 <Formik
                      initialValues={{
-                         name: "hound",
+                         name: "",
                          email: "",
                          company: "",
                      }}
@@ -70,16 +70,16 @@ function Resume() {
                       
 
                      })}
-                     onSubmit={(values, {setSubmitting}) => {
+                     onSubmit={(values, {setSubmitting, resetForm}) => {
                         setTimeout(() => {
                           alert(JSON.stringify(values, null, 2));
                           setSubmitting(false);
                         }, 400);
-
+                        resetForm({values:""})
                     }}              
                      >
                 
-                {({values, errors}) => (
+                {({values, errors, isSubmitting}) => (
                 <Form className={classes.form}>
                     
                              <FormGroup >
@@ -89,7 +89,7 @@ function Resume() {
                              <FormGroup>
                                     <Field name="email" label="Email" as={TextField}/>
                                     {/* {touched.email && errors.email ? errors.email : null} */}
-                <ErrorMessage name="email">{ msg => <div className={classes.mwarning}>{msg}</div>}</ErrorMessage>
+                                    <ErrorMessage name="email">{ msg => <div className={classes.mwarning}>{msg}</div>}</ErrorMessage>
                             </FormGroup>   
                             <FormGroup>
                                     <Field name="company" label="Company name"  as={TextField} />
@@ -97,10 +97,10 @@ function Resume() {
                 <ErrorMessage name="company">{ msg => <div className={classes.mwarning}>{msg}</div>}</ErrorMessage>
                             </FormGroup>
                             
-                            <pre>{JSON.stringify(values, null, 4)}</pre>
-                            <pre>{JSON.stringify(errors, null, 4)}</pre>
+                            {/* <pre>{JSON.stringify(values, null, 4)}</pre>
+                            <pre>{JSON.stringify(errors, null, 4)}</pre> */}
                      
-                     <Button type="Submit"variant="outlined" style={{marginTop:"10px", color:"lightblue", backgroundColor:"#0047AB"}} >Am a button</Button>    
+                     <Button type="Submit"variant="outlined" disabled={isSubmitting} style={{marginTop:"10px", color:"lightblue", backgroundColor:"#0047AB"}} >Am a button</Button>    
                </Form>            
             
 

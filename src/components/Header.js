@@ -12,6 +12,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Avatar from '@material-ui/core/Avatar';
 import { getTabValue } from '../action';
+import Ppicture from "../data/Images/Ppicture.jpg"
 
 
 const useStyles = makeStyles((theme) => ({
@@ -87,7 +88,7 @@ export default function Header() {
           <Typography variant="h6" className={classes.title}>
             Discover me
           </Typography>
-          <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+          <Avatar alt="Samir Bello" src={Ppicture} />
         </Toolbar>
       </AppBar>
     </div>
