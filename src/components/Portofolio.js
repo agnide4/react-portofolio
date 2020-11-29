@@ -135,6 +135,9 @@ const useStyles = makeStyles({
     media: {
       height: 140,
     },
+    display:{
+        alignItems:"center",
+    }
   });
   
 
@@ -147,7 +150,7 @@ export default function Portofolio() {
 
     return (
 
-        <Grid container spacing={2} style={{backgroundColor:"lightgrey", marginTop:"07px", marginLeft:"15px"}}>
+        <Grid container spacing={2} style={{backgroundColor:"lightgrey", marginTop:"07px", marginLeft:"15px"}} className={classes.display}>
             { activities.map((item, id) => (
                 item.Project ? (
                         <Grid item xs={12} sm={3}>
