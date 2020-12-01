@@ -3,6 +3,7 @@ import { FormControl, Input, FormHelperText, InputLabel, Button, Hidden, FormGro
 import TextField from '@material-ui/core/TextField'
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
+import Axios from "axios"
 import {Formik, Form, Field, ErrorMessage} from "formik"
 import * as Yup from "yup"
 
@@ -74,8 +75,16 @@ function Resume() {
                         setTimeout(() => {
                           alert(JSON.stringify(values, null, 2));
                           setSubmitting(false);
+                          Axios.post("/api/resume", values)
+                                .then(res => {
+                                    console.log("message sent")
+                                    resetForm({values:""})
+                                })
+                                .catch(()=> {
+                                    console.log("Message not sent, Try again")
+                                })
                         }, 400);
-                        resetForm({values:""})
+                        
                     }}              
                      >
                 
