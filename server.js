@@ -2,7 +2,9 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const nodemailer = require('nodemailer')
 const cors = require('cors')
+require('dotenv').config()
 const xoauth2 = require("xoauth2")
+
 
 
 const app = express()
@@ -25,10 +27,10 @@ app.post('api/resume', (req, res) =>{
         service: "gmail",
         auth: {
             xoauth2: xoauth2.createXOAuth2Generator({
-                user: "agnide4@gmail.com",
-                clientId: "946363558550-0dn24617aqt8clc8t821t0i287vpdldu.apps.googleusercontent.com",
-                clientSecret: "BaS5XmNX6Fx0fXwAi1Vcdhlh",
-                refreshToken: "1//047s_bNl9ndALCgYIARAAGAQSNwF-L9IrKnM2Ve62av1kM4oBSRDVaCr4fPSO8L8uCSALHpubie7V5xTQhXWaA0q2ba2DdCbkrak"
+                user: process.env.user,
+                clientId: process.env.clientId,
+                clientSecret: process.env.clientSecret,
+                refreshToken: process.env.refreshToken
 
             })
 
