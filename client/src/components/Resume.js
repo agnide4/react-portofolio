@@ -79,6 +79,7 @@ function Resume() {
                                 .then(res => {
                                     console.log("message sent")
                                     resetForm({values:""})
+                                    
                                 })
                                 .catch(()=> {
                                     console.log("Message not sent, Try again")
