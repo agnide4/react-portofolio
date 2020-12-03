@@ -147,7 +147,18 @@ function Contact() {
                         <FormGroup>
                         <Field component={DatePickerField}
                            
-                            name="date"
+                            name="startDate"
+                            
+                            className={classes.date}
+                            InputLabelProps={{
+                            shrink: true,
+                        }}
+                        />
+                        </FormGroup>
+                        <FormGroup>
+                        <Field component={DatePickerField}
+                           
+                            name="endDate"
                             
                             className={classes.date}
                             InputLabelProps={{

@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const nodemailer = require('nodemailer')
 const path = require("path")
 const cors = require('cors')
+const ical = require('ical-generator')
 
 require('dotenv').config()
 
@@ -88,6 +89,14 @@ app.post('/api/resume', (req, res) =>{
 app.post('/api/meeting', (req, res) =>{
     console.log("here at 89")
     let data = req.body
+    console.log(data)
+    let eventObj = {
+        'start' : data.startDate,
+        'end' : data.endDate,
+        'Summary' : data.about,
+        'organiser' : {'name' : data.name, 'email': data.email},
+        'location' : data.location
+    }
     let smtpTransport = nodemailer.createTransport({
 
         host: 'smtp.gmail.com',
@@ -101,24 +110,35 @@ app.post('/api/meeting', (req, res) =>{
         }
     })
 
-    let content = `BEGIN:VCALENDAR\r\n` +
-                  `METHOD:REQUEST\r\n` + 
-                  `Summary:${data.about}` +
-                  `Location: ${data.location}` +
-                  `DTSTART, VALUE=DATE:${data.date}\` +
-                   END:VCALENDAR`;
+   let cal = ical()
+   cal.name("Meeting")
+   cal.domain("github.com/agnide4")
+   
+   cal.createEvent({
+       start: eventObj.start,
+       end: eventObj.end,
+       Summary: eventObj.Summary,
+       location: eventObj.location,
+       organizer: {
+           name: eventObj.organiser.name,
+           email: eventObj.organiser.email
+       },
+       method: 'request'
+   })
+   console.log(cal)
+   let invite = cal.toString()
     console.log(data.name)
     let mailOptions = {
         from: `${data.name} <${data.email}>`,
         to: 'Samir B <agnide4@gmail.com>',
-        subject: `Meeting request at ${data.location}, ${data.phone}`,
+        subject: `Meeting request from ${data.name}, ${data.phone}`,
         text: `${data.about}`,
-        icalEvent: {
-            filename: "invitation.ics",
-            method: 'request',
-            content: content
-
+        icalEvent:{
+            filename: "invite.ics",
+            method: "request",
+            content: invite
         },
+
         auth:{
             user: process.env.user,
             refreshToken: process.env.refreshToken,
