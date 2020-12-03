@@ -85,6 +85,59 @@ app.post('/api/resume', (req, res) =>{
     smtpTransport.close()
 })
 
+app.post('/api/meeting', (req, res) =>{
+    console.log("here at 89")
+    let data = req.body
+    let smtpTransport = nodemailer.createTransport({
+
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
+        auth: {
+                type: "OAuth2",
+                clientId: process.env.clientId,
+                clientSecret: process.env.clientSecret
+
+        }
+    })
+
+    let content = `BEGIN:VCALENDAR\r\n` +
+                  `METHOD:REQUEST\r\n` + 
+                  `Summary:${data.about}` +
+                  `Location: ${data.location}` +
+                  `DTSTART, VALUE=DATE:${data.date}\` +
+                   END:VCALENDAR`;
+    console.log(data.name)
+    let mailOptions = {
+        from: `${data.name} <${data.email}>`,
+        to: 'Samir B <agnide4@gmail.com>',
+        subject: `Meeting request at ${data.location}, ${data.phone}`,
+        text: `${data.about}`,
+        icalEvent: {
+            filename: "invitation.ics",
+            method: 'request',
+            content: content
+
+        },
+        auth:{
+            user: process.env.user,
+            refreshToken: process.env.refreshToken,
+            accessToken: process.env.accessToken
+        }
+    }
+
+    smtpTransport.sendMail(mailOptions, (err, res) =>{
+        if(err){
+            console.log("err", err)
+            
+        }else{
+            console.log("email sent")
+            res.send("success")
+        }
+    })
+
+    smtpTransport.close()
+})
 
 
 

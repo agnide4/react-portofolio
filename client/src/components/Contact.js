@@ -4,6 +4,7 @@ import { DatePicker, KeyboardDatePicker, MuiPickersUtilsProvider } from "@materi
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import Axios from "axios"
 import * as Yup from "yup"
 import MomentUtils from '@date-io/moment'
 
@@ -103,6 +104,8 @@ function Contact() {
                        phone: Yup.string()
                            .required("Field is required")
                            .matches(phoneRegExp, 'Phone number is not valid'),
+                        location: Yup.string()
+                           .required("Location is required"),
                         date: Yup.string().required()
 
                     })}
@@ -110,9 +113,17 @@ function Contact() {
                         setTimeout(() => {
                           alert(JSON.stringify(values, null, 2));
                             setSubmitting(false);
+                            Axios.post("/api/meeting", values)
+                                .then(res => {
+                                    console.log("message sent")
+                                    resetForm({values:""})
+                                    
+                                })
+                                .catch(()=> {
+                                    console.log("Message not sent, Try again")
+                                })
                         }, 400);
-                        resetForm({values:""})
-
+                        
                     }} 
                 
                 
@@ -143,6 +154,10 @@ function Contact() {
                             shrink: true,
                         }}
                         />
+                        </FormGroup>
+                        <FormGroup>
+                            <Field name="location" as={TextField} label="Location" />
+                            <ErrorMessage name="location">{ msg => <div className={classes.mwarning}>{msg}</div> }</ErrorMessage>
                         </FormGroup>
                         <FormGroup>
                             <Field name="about" as={TextField} multiline rows={3} variant="outlined" />
