@@ -10,7 +10,7 @@ import Practitoner from "../data/Aws certs/practitioner.pdf"
 import PricingSupport from "../data/Aws certs/PricingSupport.pdf"
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`
 
-
+const aws = [Architecture, CloudSecurity, Practitoner, PricingSupport]
  
 export default  function MyPdf() {
 
@@ -37,8 +37,25 @@ export default  function MyPdf() {
         else if (pdfValue === "Bootcamp"){
             setUrl(Bcamp)
             console.log(pdfUrl)
-        } else {
-            setUrl(Richland)
+        } else if(pdfValue === "AWS") {
+            let timer;
+            for(let i=0; i<aws.length; i++){
+              console.log("head", i)
+              if (i == aws.length-1){
+                clearTimeout(timer)
+                console.log("breaking", i)
+                {break;}
+              } else {
+                timer = setTimeout(() => {
+                console.log(i)
+                setUrl(aws[i])
+                }, 1000);
+
+              }
+              
+            }
+            
+            setUrl(aws[3])
             console.log(pdfUrl)
         }
     }, [pdfUrl])

@@ -1,19 +1,15 @@
 import React from 'react'
 import data from "../data/certs.json"
-import { CardContent, makeStyles, Typography, Modal, withWidth } from "@material-ui/core"
+import { CardContent, makeStyles, Modal} from "@material-ui/core"
 import { useSelector, useDispatch } from "react-redux"
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
-import { borders } from '@material-ui/system'
-import CardMedia from '@material-ui/core/CardMedia';
 import Box from '@material-ui/core/Box'
-import richland from "../data/Images/Richland College.pdf"
 import Pdf from "../components/Mypdf"
 import Grid from '@material-ui/core/Grid';
 
 import {getPdfValue} from "../action"
 
-import { CreateRounded } from '@material-ui/icons';
 import "../App.css"
 
 const certs = data
@@ -165,44 +161,16 @@ export default function Education() {
                             <li className={classes.certs}  title="Bootcamp" onClick={(e) => {pdfOnclick(e)}}>Graduate of Coding BootCamp UT Austin October 2020</li>
                             <li className={classes.certs} >Student Pursuing Bachelor degree in Computer Science at UT Dallas</li>
                             <li className={classes.certs} title="Richland" onClick={(e) => {pdfOnclick(e)}}>Associate degree in Computer Science (Richland College) May 2019</li>
+                            <li className={classes.certs} title="AWS" onClick={(e) => {pdfOnclick(e)}}>Other Training</li>
                         </ul>              
                </CardContent>
            </Card>
 
-           </Grid>
-           
-               
-            
-            
-            </Grid>   
-       
-              
-              
-              
+           </Grid>   
+            </Grid>            
               
                
            
         </div>
     )
 }
-
-/* {
-                   certs.map((cert, index) => (
-                       cert.type != "Certifications" ? (
-                                
-                                <Card className ={classes.root} sm={4} xs={12}>
-                                <CardHeader title={cert.type} />
-                                {console.log(cert.proof)}
-                                
-                                <CardMedia src={"({cert.proof})"} className={classes.media}  />
-                                </Card>
-
-                          
-                       ) : (
-
-                           <h3>
-                               {cert.type}
-                           </h3>
-                       )
-                   ))
-               }  */
