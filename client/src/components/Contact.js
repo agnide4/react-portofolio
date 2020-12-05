@@ -1,7 +1,8 @@
-import React from 'react'
-import { FormControl, Input, FormHelperText, InputLabel, Button, Hidden, FormGroup, TextField } from '@material-ui/core'
-import { DatePicker, KeyboardDatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers"
+import React, {useState, useEffect} from 'react'
+import { FormControl, Input, FormHelperText, InputLabel, Button, Hidden, FormGroup, TextField, Collapse } from '@material-ui/core'
+import { DatePicker, KeyboardDatePicker, MuiPickersUtilsProvider, KeyboardDateTimePicker } from "@material-ui/pickers"
 import Grid from '@material-ui/core/Grid';
+import Alert from '@material-ui/lab/Alert'
 import { makeStyles } from '@material-ui/core/styles';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import Axios from "axios"
@@ -52,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
   
     return (
        <MuiPickersUtilsProvider utils={MomentUtils}>
-             <KeyboardDatePicker
+             <KeyboardDateTimePicker
                     clearable
                     disablePast
                     name={field.name}
@@ -80,17 +81,39 @@ const useStyles = makeStyles((theme) => ({
 
   
 function Contact() {
+
+    const [msgStatus, setMsgStatus] = useState(false)
+    const [noMsg, setnoMsg] = useState(false)
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+          setMsgStatus(false)
+        }, 1000);
+        return () => clearTimeout(timer);
+      }, [msgStatus]);
+
+      useEffect(() => {
+        const timer = setTimeout(() => {
+          setnoMsg(false)
+        }, 2000);
+        return () => clearTimeout(timer);
+      }, [noMsg]);
+
+
     const classes = useStyles();
     return (
 
         <div>
-                    <h1>Set up an appointment</h1>
+                    <h3>Request a meeting</h3>
                 <Formik
                     initialValues={{
                         name: "",
                         email: "",
                         phone: "",
-                        date: new Date()
+                        startDate: new Date(),
+                        endDate: new Date(),
+                        location: "",
+                        about: ""
 
                     }}
                     validationSchema={Yup.object({
@@ -106,7 +129,7 @@ function Contact() {
                            .matches(phoneRegExp, 'Phone number is not valid'),
                         location: Yup.string()
                            .required("Location is required"),
-                        date: Yup.string().required()
+                        startDate: Yup.string().required()
 
                     })}
                     onSubmit={(values, {setSubmitting, resetForm}) => {
@@ -114,14 +137,17 @@ function Contact() {
                           alert(JSON.stringify(values, null, 2));
                             setSubmitting(false);
                             Axios.post("/api/meeting", values)
+                                .catch(()=> {
+                                    setnoMsg(true)
+                                })
                                 .then(res => {
-                                    console.log("message sent")
-                                    resetForm({values:""})
+                                    if(res.status === 200){
+                                        setMsgStatus(true)
+                                        resetForm({values:""})
+                                    }
                                     
                                 })
-                                .catch(()=> {
-                                    console.log("Message not sent, Try again")
-                                })
+                                
                         }, 400);
                         
                     }} 
@@ -173,8 +199,14 @@ function Contact() {
                         <FormGroup>
                             <Field name="about" as={TextField} multiline rows={3} variant="outlined" />
                         </FormGroup>
-
-                        <Button type="Submit" variant="outlined" disabled={isSubmitting} style={{marginTop:"10px", color:"lightblue", backgroundColor:"#0047AB"}}>Am a button</Button>
+                        <Collapse in={msgStatus}>
+                            <Alert severity="success" >Message Sent. Thanks for stopping by!</Alert>
+                        </Collapse>
+                        <Collapse in={noMsg}>
+                            <Alert severity="error">We were unable to process your request. Please try again</Alert>
+                        </Collapse>
+                     
+                        <Button type="Submit" variant="outlined" disabled={isSubmitting} style={{marginTop:"10px", color:"lightblue", backgroundColor:"#0047AB"}}>SUBMIT</Button>
                     </Form>
                     
                 )}

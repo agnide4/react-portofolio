@@ -4,6 +4,7 @@ import {GET_PDFVALUE_REQUEST, GET_PDFVALUE_SUCCESS, GET_PDFVALUE_FAILURE} from "
 export const initialState = {
     tabValue: 0,
     pdfValue:"",
+    mStatus: false,
     error:""
 };
 
@@ -22,6 +23,8 @@ export default (state = initialState, action) => {
         return{...state, pdfValue: action.payload, error: null}
       case GET_PDFVALUE_FAILURE:
         return{...state, error: action.payload}
+      
+        
 
 
 

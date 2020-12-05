@@ -73,7 +73,7 @@ app.post('/api/resume', (req, res) =>{
         }
     }
 
-    smtpTransport.sendMail(mailOptions, (err, res) =>{
+    smtpTransport.sendMail(mailOptions, (err, response) =>{
         if(err){
             console.log("err", err)
             
@@ -113,6 +113,8 @@ app.post('/api/meeting', (req, res) =>{
    let cal = ical()
    cal.name("Meeting")
    cal.domain("github.com/agnide4")
+   cal.method("REQUEST")
+   cal.url(eventObj.location)
    
    cal.createEvent({
        start: eventObj.start,
@@ -122,17 +124,19 @@ app.post('/api/meeting', (req, res) =>{
        organizer: {
            name: eventObj.organiser.name,
            email: eventObj.organiser.email
-       },
-       method: 'request'
+       }
    })
    console.log(cal)
    let invite = cal.toString()
+   console.log(invite)
     console.log(data.name)
     let mailOptions = {
         from: `${data.name} <${data.email}>`,
         to: 'Samir B <agnide4@gmail.com>',
         subject: `Meeting request from ${data.name}, ${data.phone}`,
-        text: `${data.about}`,
+        text: `Reason: ${data.about}\n
+               Name: ${data.name} \n
+               Email: ${data.email}`,
         icalEvent:{
             filename: "invite.ics",
             method: "request",
@@ -146,12 +150,13 @@ app.post('/api/meeting', (req, res) =>{
         }
     }
 
-    smtpTransport.sendMail(mailOptions, (err, res) =>{
+    smtpTransport.sendMail(mailOptions, (err, response) =>{
         if(err){
             console.log("err", err)
             
         }else{
             console.log("email sent")
+            console.log(res)
             res.send("success")
         }
     })
