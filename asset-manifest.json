@@ -1,0 +1,39 @@
+{
+  "files": {
+    "main.css": "/react-portofolio/static/css/main.9a72c1e7.chunk.css",
+    "main.js": "/react-portofolio/static/js/main.009078ac.chunk.js",
+    "main.js.map": "/react-portofolio/static/js/main.009078ac.chunk.js.map",
+    "runtime-main.js": "/react-portofolio/static/js/runtime-main.b3959288.js",
+    "runtime-main.js.map": "/react-portofolio/static/js/runtime-main.b3959288.js.map",
+    "static/js/2.d8f7b8e4.chunk.js": "/react-portofolio/static/js/2.d8f7b8e4.chunk.js",
+    "static/js/2.d8f7b8e4.chunk.js.map": "/react-portofolio/static/js/2.d8f7b8e4.chunk.js.map",
+    "index.html": "/react-portofolio/index.html",
+    "precache-manifest.1cdff77c87791b1378e1bfd23fe6dab3.js": "/react-portofolio/precache-manifest.1cdff77c87791b1378e1bfd23fe6dab3.js",
+    "service-worker.js": "/react-portofolio/service-worker.js",
+    "static/css/main.9a72c1e7.chunk.css.map": "/react-portofolio/static/css/main.9a72c1e7.chunk.css.map",
+    "static/js/2.d8f7b8e4.chunk.js.LICENSE.txt": "/react-portofolio/static/js/2.d8f7b8e4.chunk.js.LICENSE.txt",
+    "static/media/Coding Boot Camp Certificate Program.pdf": "/react-portofolio/static/media/Coding Boot Camp Certificate Program.2c1c1d16.pdf",
+    "static/media/DayPlanner.JPG": "/react-portofolio/static/media/DayPlanner.1471039f.JPG",
+    "static/media/Eat-Daburger.JPG": "/react-portofolio/static/media/Eat-Daburger.16f5fc14.JPG",
+    "static/media/EmployeeD.JPG": "/react-portofolio/static/media/EmployeeD.a4b3e47c.JPG",
+    "static/media/NoteTaker.JPG": "/react-portofolio/static/media/NoteTaker.2365a3f4.JPG",
+    "static/media/Ppicture.jpg": "/react-portofolio/static/media/Ppicture.4e0aedc1.jpg",
+    "static/media/PricingSupport.pdf": "/react-portofolio/static/media/PricingSupport.00937675.pdf",
+    "static/media/Quiz.JPG": "/react-portofolio/static/media/Quiz.b71f31b7.JPG",
+    "static/media/Richland College.pdf": "/react-portofolio/static/media/Richland College.5167b8fe.pdf",
+    "static/media/Springboard project.JPG": "/react-portofolio/static/media/Springboard project.c1e211cf.JPG",
+    "static/media/architecture.pdf": "/react-portofolio/static/media/architecture.bdfcd7fe.pdf",
+    "static/media/cloudSecurity.pdf": "/react-portofolio/static/media/cloudSecurity.25529b6b.pdf",
+    "static/media/fitnessTracker.JPG": "/react-portofolio/static/media/fitnessTracker.0a2eed15.JPG",
+    "static/media/gBooks.JPG": "/react-portofolio/static/media/gBooks.285043cd.JPG",
+    "static/media/practitioner.pdf": "/react-portofolio/static/media/practitioner.f3907146.pdf",
+    "static/media/pwdGenerator.JPG": "/react-portofolio/static/media/pwdGenerator.84859e69.JPG",
+    "static/media/weatherboard.JPG": "/react-portofolio/static/media/weatherboard.45447c3f.JPG"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b3959288.js",
+    "static/js/2.d8f7b8e4.chunk.js",
+    "static/css/main.9a72c1e7.chunk.css",
+    "static/js/main.009078ac.chunk.js"
+  ]
+}
