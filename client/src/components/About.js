@@ -53,9 +53,10 @@ export default function About() {
                 <Grid item sm={6}><h1>Technologies I use</h1>
                     <Paper>
                     <p>Throughout my learning journey I have acquainted myself with many Technologies like
-                     <h5>Javascript, HTML, Java, C++</h5>
-                      When it comes to databases I can comfortably work in <h5>SQL(MySQL) and noSQL(MongoDb)</h5> databases and would love to learn new ones as well
-                     Other technologies I use daily are <h5>CSS, JQuery, Node JS, React, redux, bootStrap, Material UI, GIT and github, express JS</h5>
+                     <span>Javascript, HTML, Java, C++</span>
+                      When it comes to databases I can comfortably work in 
+                      <span>SQL(MySQL) and noSQL(MongoDb)</span> databases and would love to learn new ones as well
+                     Other technologies I use daily are <span>CSS, JQuery, Node JS, React, redux, bootStrap, Material UI, GIT and github, express JS</span>
                      I am also well versed in cloud technoligies(AWS) and continue to enrich my mind with technologies
                      while practicing the one I`ve already learned
                     </p>
