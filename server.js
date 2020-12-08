@@ -12,6 +12,7 @@ require('dotenv').config()
 
 const app = express()
 const PORT = process.env.PORT || 3001;
+const HOST = process.env.YOUR_HOST || '0.0.0.0'
 
 app.use(express.urlencoded({extended:true}))
 // app.use(bodyParser.json())
@@ -178,6 +179,6 @@ app.post('/api/meeting', (req, res) =>{
 
 
 
-app.listen(PORT, () => {
+app.listen(PORT, HOST, () => {
   console.log(`Example app listening at http://localhost:${PORT}`)
 })
