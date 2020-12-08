@@ -180,5 +180,5 @@ app.post('/api/meeting', (req, res) =>{
 
 
 app.listen(PORT, HOST, () => {
-  console.log(`Example app listening at http://localhost:${PORT}`)
+  console.log(`Example app listening at http://${HOST}:${ PORT }/`)
 })
