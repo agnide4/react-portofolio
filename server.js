@@ -13,11 +13,11 @@ require('dotenv').config()
 const app = express()
 const PORT = process.env.PORT || 3001;
 
-
+app.use(express.urlencoded({extended:true}))
 // app.use(bodyParser.json())
 // app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.json());
-app.use(express.urlencoded({extended:true}))
+
 app.use(cors())
 
 if (process.env.NODE_ENV === "production") {
@@ -47,9 +47,9 @@ app.get("*", (req, res) => {
 
 
 
-app.get('/', () => {
-  res.send('Hello World!')
-})
+// app.get('/', () => {
+//   res.send('Hello World!')
+// })
 
 app.post('/api/resume', (req, res) =>{
     console.log("here at 25")
